@@ -1,12 +1,20 @@
-<h2> New Game! </h2>
+<div class="container">
+  <h1 class="new-game"> New Game </h1>
 
-<span class="letter-choices"> <%= @letters_display %> </span>
+  <div class="letter-selection-div">
+    <%= @separated.each_char do |c| %>
+      <span class="letter-choices"><%= c %></span>
+      <span class="divider"></span>
+      <% end %>
+  </div>
 
-<p> What is the longest word you can find? </p>
-
-<form action="/score" method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <%= hidden_field_tag :letters_display, @letters_display %>
-  <input type="text" name="userinput">
-  <input type="submit" value="Play">
-</form>
+  <div class="form-div">
+  <p class="p-guess"> What is the longest word you can find? </p>
+    <form action="/score" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :letters_display, @letters_display %>
+      <input class="text-input" type="text" name="userinput">
+      <input class="submit" type="submit" value="Play">
+    </form>
+  </div>
+</div>

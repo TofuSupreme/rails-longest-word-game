@@ -5,7 +5,8 @@ class GamesController < ApplicationController
   def new
     @grid_size = 10
     @letters = generate_grid(@grid_size)
-    @letters_display = @letters.join(' ')
+    @separated = @letters.join('')
+
   end
 
   def generate_grid(grid_size)
@@ -13,13 +14,9 @@ class GamesController < ApplicationController
   end
 
   def score
-    @attempt = params[:userinput]
+    @user_guess = params[:userinput]
     @compare_letters = params[:letters_display]
-    @your_score = score_and_message(@attempt, @compare_letters)
-    # @is_word = english_word?(@attempt)
-    # @is_included = included?(@attempt, @letters)
-
-
+    @user_results = score_and_message(@user_guess, @compare_letters)
   end
 
   def english_word?(word)

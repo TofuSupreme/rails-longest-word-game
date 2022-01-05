@@ -1,9 +1,67 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  padding: 0;
+  margin: 0;
+}
+
+// NEW-html page
+.container {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.new-game {
+  font-size: 40px;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.letter-selection-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .letter-choices {
-border: black, 1px, solid;
-background-color: blue;
-color: white;
-font-size: 24px;
+  background-color: #3498DC;
+  padding: 8px 14px 8px 14px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 7px 9px 5px -4px rgba(0,0,0,0.18);
+
+}
+.divider {
+  padding: 4px;
+}
+.form-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+}
+.p-guess {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.text-input {
+  height: 24px;
+  width: 220px;
+  padding: 0 4px 0 4px;
+}
+.submit {
+  background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	padding: 8px 32px;
+  margin-left: 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
 }
