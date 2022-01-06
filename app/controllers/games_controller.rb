@@ -15,8 +15,9 @@ class GamesController < ApplicationController
 
   def score
     @user_guess = params[:userinput]
-    @compare_letters = params[:letters_display]
-    @user_results = score_and_message(@user_guess, @compare_letters)
+    @letters_display = params[:separated]
+    @user_results = score_and_message(@user_guess, @letters_display)
+    @is_included = included?(@user_guess, @letters_display)
   end
 
   def english_word?(word)

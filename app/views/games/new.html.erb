@@ -12,7 +12,7 @@
   <p class="p-guess"> What is the longest word you can find? </p>
     <form action="/score" method="post">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= hidden_field_tag :letters_display, @letters_display %>
+      <%= hidden_field_tag :separated, @separated %>
       <input class="text-input" type="text" name="userinput">
       <input class="submit" type="submit" value="Play">
     </form>
