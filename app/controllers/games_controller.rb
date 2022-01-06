@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     @user_guess = params[:userinput]
     @letters_display = params[:separated]
     @user_results = score_and_message(@user_guess, @letters_display)
-    @score_tracking = score_tracker(score)
+    # @score_tracking = score_tracker(score)
   end
 
   def english_word?(word)
@@ -33,7 +33,7 @@ class GamesController < ApplicationController
     if included?(attempt.upcase, grid)
       if english_word?(attempt)
         "Congratulations! #{attempt} is a word!"
-        score_tracker(score)
+        # score_tracker(score)
       else
         "Sorry! But #{attempt} is not a word!"
       end
@@ -42,8 +42,8 @@ class GamesController < ApplicationController
     end
   end
 
-  def score_tracker(score)
-    score = 0
-    score += 1
-  end
+  # def score_tracker(score)
+  #   score = 0
+  #   score += 1
+  # end
 end
