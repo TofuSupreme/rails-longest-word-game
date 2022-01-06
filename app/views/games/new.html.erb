@@ -2,7 +2,7 @@
   <h1 class="new-game-h1"> New Game </h1>
 
   <div class="letter-selection-div">
-    <%= @separated.each_char do |c| %>
+    <% @separated.each_char do |c| %>
       <span class="letter-choices"><%= c %></span>
       <span class="divider"></span>
       <% end %>
@@ -13,8 +13,8 @@
     <form action="/score" method="post">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= hidden_field_tag :separated, @separated %>
-      <input class="text-input" type="text" name="userinput">
-      <input class="submit" type="submit" value="Play">
+        <input class="text-input" type="text" name="userinput">
+        <input class="submit" type="submit" value="Play">
     </form>
   </div>
 </div>
