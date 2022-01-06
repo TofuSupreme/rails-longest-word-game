@@ -6,7 +6,6 @@ class GamesController < ApplicationController
     @grid_size = 10
     @letters = generate_grid(@grid_size)
     @separated = @letters.join('')
-
   end
 
   def generate_grid(grid_size)
@@ -17,7 +16,7 @@ class GamesController < ApplicationController
     @user_guess = params[:userinput]
     @letters_display = params[:separated]
     @user_results = score_and_message(@user_guess, @letters_display)
-    @is_included = included?(@user_guess, @letters_display)
+    @score_tracking = score_tracker(score)
   end
 
   def english_word?(word)
@@ -27,16 +26,14 @@ class GamesController < ApplicationController
   end
 
   def included?(guess, letters)
-    guess.chars.all? { |letter| guess.count(letter) <= letters.count(letter) }
+    guess.chars.all? { |letter| guess.upcase.count(letter) <= letters.count(letter) }
   end
-  # def compute_score(attempt, time_taken)
-  #   time_taken > 60.0 ? 0 : attempt.size * (1.0 - (time_taken / 60.0))
-  # end
 
   def score_and_message(attempt, grid)
     if included?(attempt.upcase, grid)
       if english_word?(attempt)
         "Congratulations! #{attempt} is a word!"
+        score_tracker(score)
       else
         "Sorry! But #{attempt} is not a word!"
       end
@@ -44,29 +41,9 @@ class GamesController < ApplicationController
       "Sorry but #{attempt} does not exist in the grid. Try again!"
     end
   end
+
+  def score_tracker(score)
+    score = 0
+    score += 1
+  end
 end
-
-# def run_game(attempt, grid, start_time, end_time)
-#   # TODO: runs the game and return detailed hash of result (with `:score`, `:message` and `:time` keys)
-#   result = { time: end_time - start_time }
-
-#   score_and_message = score_and_message(attempt, grid, result[:time])
-#   result[:score] = score_and_message.first
-#   result[:message] = score_and_message.last
-
-#   result
-# end
-
-# def score_and_message(attempt, grid, time)
-#   if included?(attempt.upcase, grid)
-#     if english_word?(attempt)
-#       score = compute_score(attempt, time)
-#       @isword = [score, 'Congratulations!']
-#     else
-#       @notaword = [0, 'Sorry, not an English word.']
-#     end
-#   else
-#     @[0, 'Not in the grid! Try again']
-#   end
-# end
-# end
